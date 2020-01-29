@@ -1,0 +1,17 @@
+body{
+    text-align:right ;
+}
+.info,.licen{
+    padding: 40px 0px;
+}
+.info img{
+    width: 300px;
+    height: 250px;
+}
+.sec-t{
+    margin: 30px 0px;
+}
+.licen img{
+    width: 200px;
+    height: 200px;
+}
