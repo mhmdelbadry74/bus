@@ -25,5 +25,9 @@ class DriClient extends Model
     {
         return $this->hasMany('App\Models\Car','driclient_id');
     }
+    public function pays()
+    {
+        return $this->hasMany('App\Models\Payment','driclient_id');
+    }
 
 }

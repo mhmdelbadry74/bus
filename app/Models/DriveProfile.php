@@ -15,6 +15,14 @@ class DriveProfile extends Model
     {
         return $this->belongsTo('App\Models\BloodType');
     }
+    public function payments()
+    {
+        return $this->hasMany('App\Models\Payment');
+    } 
+    public function subs()
+    {
+        return $this->hasMany('App\Models\Subscription');
+    }
 
     public function cities()
     {
@@ -23,7 +31,7 @@ class DriveProfile extends Model
 
     public function drclients()
     {
-        return $this->belongsTo('App\Models\DriClient');
+        return $this->belongsTo('App\Models\DriClient','driclient_id');
     }
 
   

@@ -13,6 +13,7 @@ use App\Models\DriClient;
 use App\Models\DriveProfile;
 use App\Models\Kid;
 use App\Models\Car;
+use App\Models\Payment;
 
 class MainController extends Controller{
 
@@ -109,21 +110,8 @@ class MainController extends Controller{
                 if ($profile_exist) {
                     return response('profile aleady exist ',403)->header('content-type','text/plain');
                 }else{
-
-
-
-
-
-
-
-
-
-
-
-
-                    
                     $profile = DriveProfile::create($request->all());
-                    
+
                $arr_img=['dl','nidimg','image'] ; 
                
                     foreach ($arr_img as $key) {
@@ -159,28 +147,24 @@ class MainController extends Controller{
                 'age' => 'required',
                 'name' => 'required|unique:kids',
                 'destination_id' => 'required' ,
-                'client_profile_id' =>'required',
+                'driclient_id' =>'required',
                 'gender' =>'required|in:male,fmale'
             ]);
             if ($valditor->fails()) {
     
                 return responsejson(0,"failed",$valditor->errors());
-            }         
-            $cccc = ClientProfile::where('id',$request->client_profile_id)->get();
-            $bbbb=$cccc->toArray();
-            $dir_id = (count($bbbb)>0) ? $bbbb[0]['driclient_id'] : 'null' ;
-            $check_entry_id = DriClient::select('api_token')->where('id',$dir_id)->get();
+            } 
+            $check_entry_id = DriClient::select('api_token')->where('id',$request->driclient_id)->get();
+            $token_of_insert_id = $check_entry_id[0]['api_token'];
             $current_token = $request->api_token;
             $token_of_insert_id = (count($check_entry_id)>0) ? $check_entry_id[0]['api_token'] : null ;
-            $tokens = [$token_of_insert_id,$current_token];
-
-            
+            $tokens = [$token_of_insert_id,$request->api_token];
 
             if ($tokens[0] !== $tokens[1]) {
                 return response('you are not autolizate ',403)->header('content-type','text/plain');
             }
             else {
-                $profile = ClientProfile::create($request->all());
+                $profile = Kid::create($request->all());
                 if ($request->hasFile('image')) {
                     $logo = $request->image;
                     $logo_new_name = time() . $logo->getClientOriginalName();
@@ -209,22 +193,20 @@ class MainController extends Controller{
                     'passenger' => 'required',
                     'modal' => 'required',
                     'type' => 'required',
-                    'driver_profile_id' =>'required|unique:cars'
+                    'driclient_id' =>'required'
                   
                 ]);
                 if ($valditor->fails()) {
         
                     return responsejson(0,"failed",$valditor->errors());
                 }         
-                $cccc = DriveProfile::where('id',$request->driver_profile_id)->get();
-                $bbbb=$cccc->toArray();
-                $dir_id = (count($bbbb)>0) ? $bbbb[0]['driclient_id'] : 'null' ;
-                $check_entry_id = DriClient::select('api_token')->where('id',$dir_id)->get();
+
+                $check_entry_id = DriClient::select('api_token')->where('id',$request->driclient_id)->get();
+                $token_of_insert_id = $check_entry_id[0]['api_token'];
                 $current_token = $request->api_token;
                 $token_of_insert_id = (count($check_entry_id)>0) ? $check_entry_id[0]['api_token'] : null ;
-                $tokens = [$token_of_insert_id,$current_token];
-    
-                
+                $tokens = [$token_of_insert_id,$request->api_token];
+ 
     
                 if ($tokens[0] !== $tokens[1]) {
                     return response('you are not autolizate ',403)->header('content-type','text/plain');
@@ -255,7 +237,71 @@ class MainController extends Controller{
             }}
 
 
-    
+            public function staueDriver(Request $request){
+                $statue = DriveProfile::select('statue')->get() ;
+                return responsejson(1,'تم الاضافة  بنجاح ' ,$statue );
+
+            }
+
+    public function payments(Request $request){
+        $valditor=Validator()->make($request->all(),[
+            'client_profile_id' => 'required|exists:driclients,id',
+            'driver_profile_id' => 'required|exists:driclients,id',
+            'kid_id' => 'required|unique:payments|exists:kids,id',
+            'request_img' =>'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
+        ]);
+        if ($valditor->fails()) {
+
+            return responsejson(0,"failed",$valditor->errors());
+        } 
+
+        $client = DriClient::select('api_token')->where('id',$request->client_profile_id)->get();
+        $driver = DriClient::select('api_token')->where('id',$request->driver_profile_id)->get();
+        $kid = kid::select('id')->where('id',$request->kid_id)->get();
+
+
+
+
+
+
+
+        // if (isset($client1[0])){
+        //     echo 'client not exist';
+        //     exit();
+        // }
+        // if (isset($driver[0])){
+        //     echo 'driver not exist';
+        //     exit();
+        // }
+        // if (isset($kid[0])){
+        //     echo 'kid not exist';
+        //     exit();
+        // }
+
+
+        $check_entry_id = DriClient::select('api_token')->where('id',$request->client_profile_id)->get();
+        $token_of_insert_id = $check_entry_id[0]['api_token'];
+        $current_token = $request->api_token;
+        $token_of_insert_id = (count($check_entry_id)>0) ? $check_entry_id[0]['api_token'] : null ;
+        $tokens = [$token_of_insert_id,$request->api_token];
+
+        if ($tokens[0] !== $tokens[1]) {
+            return response('you are not autolizate ',403)->header('content-type','text/plain');
+        }else{
+            $payments =Payment::create($request->all());
+            if ($request->hasFile('request_img')) {
+                $logo = $request->request_img;
+                $logo_new_name = time() . $logo->getClientOriginalName();
+                
+                $logo->move('uploads/post', $logo_new_name);
+                $payments->request_img = 'uploads/post/' . $logo_new_name;
+                $payments->save();
+                return responsejson(1,'تم الاضافة  بنجاح ' ,$payments );
+            }
+        }
+        
+    }
 }
 
 ?> 
+

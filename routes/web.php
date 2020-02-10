@@ -24,9 +24,13 @@ Route::group(['middleware'=>'auth'],function(){
     Route::resource('modal','ModalCarController');
     Route::resource('des','DestinionController');
     Route::resource('driver','DriverController');
+    Route::resource('payments','PaymentController');
     
     Route::get('active/{id}' , 'DriverController@active');
     Route::get('disactive/{id}' , 'DriverController@disactive');
+
+    Route::get('activepayments/{id}' , 'PaymentController@active');
+    Route::get('disactivepayments/{id}' , 'PaymentController@disactive');
 
     Route::get('change-password', 'ChangePasswordController@index');
     Route::post('change-password', 'ChangePasswordController@store')->name('change.password');

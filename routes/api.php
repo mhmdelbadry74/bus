@@ -41,6 +41,8 @@ Route::group(['prefix'=>'v1','namespace'=>'Api'],function(){
         Route::post('drive_profile','MainController@drive_profile');
         Route::post('kid_profile','MainController@kid_profile');
         Route::post('car_profile','MainController@car_profile');
+        Route::get('statue_driver','MainController@staueDriver');
+        Route::post('payments','MainController@payments');
 
 
         });

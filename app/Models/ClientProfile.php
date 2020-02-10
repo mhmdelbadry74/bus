@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class ClientProfile extends Model 
 {
+    
 
     protected $table = 'client_profiles';
     public $timestamps = true;
@@ -16,19 +17,28 @@ class ClientProfile extends Model
         return $this->hasMany('App\Models\ClientProfile');
     }
 
+    public function payments()
+    {
+        return $this->hasMany('App\Models\Payment','client_profile_id');
+    } 
+    public function subs()
+    {
+        return $this->hasMany('App\Models\Subscription');
+    }
+
     public function blood_typs()
     {
-        return $this->belongsToMany('App\Models\BloodType');
+        return $this->belongsTo('App\Models\BloodType');
     }
 
     public function cities()
     {
-        return $this->belongsToMany('App\Models\City');
+        return $this->belongsTo('App\Models\City');
     }
 
     public function drclients()
     {
-        return $this->belongsToMany('App\Models\Destination');
+        return $this->belongsTo('App\Models\Destination');
     }
 
 }

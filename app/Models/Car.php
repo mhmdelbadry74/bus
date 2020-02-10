@@ -13,7 +13,7 @@ class Car extends Model
 
     public function driver_car()
     {
-        return $this->belongsTo('App\Models\DriClient');
+        return $this->belongsTo('App\Models\DriClient','driclient_id');
     }
 
 }

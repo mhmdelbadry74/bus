@@ -142,6 +142,7 @@
         <li><a href="{{url('modal')}}"><i class="fa fa-car"></i> <span> car modal </span></a></li>
         <li><a href="{{url('des')}}"><i class="fa fa-map"></i> <span> destnioin </span></a></li>
         <li><a href="{{url('driver')}}"><i class="fa fa-car"></i> <span> driver </span></a></li>
+        <li><a href="{{url('payments')}}"><i class="fa fa-money"></i> <span> payments </span></a></li>
         
         <li><a href="{{url('change-password')}}"><i class="fa fa-key"></i> <span>change password </span></a></li>
         
