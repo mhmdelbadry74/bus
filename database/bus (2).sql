@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jan 29, 2020 at 09:59 PM
+-- Generation Time: Feb 20, 2020 at 03:27 AM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.1
 
@@ -40,8 +40,7 @@ CREATE TABLE `admin_cars` (
 --
 
 INSERT INTO `admin_cars` (`id`, `created_at`, `updated_at`, `name`) VALUES
-(3, '2019-12-27 02:02:05', '2019-12-27 07:02:05', 'تت'),
-(4, '2019-12-27 07:43:46', '2019-12-27 07:43:46', 'image');
+(2, '2020-02-20 06:47:20', '2020-02-20 06:47:20', 'php');
 
 -- --------------------------------------------------------
 
@@ -55,14 +54,6 @@ CREATE TABLE `bloode_types` (
   `updated_at` timestamp NULL DEFAULT NULL,
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `bloode_types`
---
-
-INSERT INTO `bloode_types` (`id`, `created_at`, `updated_at`, `name`) VALUES
-(1, NULL, NULL, 'A'),
-(2, NULL, NULL, 'O');
 
 -- --------------------------------------------------------
 
@@ -92,8 +83,7 @@ CREATE TABLE `cars` (
 --
 
 INSERT INTO `cars` (`id`, `created_at`, `updated_at`, `img1`, `driclient_id`, `img2`, `img3`, `type`, `modal`, `passenger`, `car_number`, `lc`, `price`, `statue`) VALUES
-(4, NULL, NULL, 'uploads/post/1577151226google-200x200.png', 10, 'uploads/post/157708385918x36_thumbnail_images_eco.jpg', 'uploads/post/157708385918x36_thumbnail_images_eco.jpg', 'fmmds', 'mkkfw', 12, '122', 'uploads/post/157708385918x36_thumbnail_images_eco.jpg', 21.00, 'desactive'),
-(5, NULL, NULL, 'uploads/post/157708385918x36_thumbnail_images_eco.jpg', 15, 'uploads/post/157708385918x36_thumbnail_images_eco.jpg', 'uploads/post/157708385918x36_thumbnail_images_eco.jpg', 'fmmdsrgggrger', 'mkkfw', 12, '122', 'uploads/post/157708385918x36_thumbnail_images_eco.jpg', 21.00, 'desactive');
+(1, '2020-02-16 09:16:36', '2020-02-16 09:16:36', 'uploads/post/1581826596qLsal9pMEwBNO2JncPoonalsv3OwwDc3mz5Zb0yc.jpeg', 2, 'uploads/post/1581826596qLsal9pMEwBNO2JncPoonalsv3OwwDc3mz5Zb0yc.jpeg', 'uploads/post/1581826596QNti0SR8EN81Z56vb0O9VqYCk4lpC5NKJDj1EhR8.jpeg', 'dgjn', 'mm', 23, 'uploads/post/1581826596QNti0SR8EN81Z56vb0O9VqYCk4lpC5NKJDj1EhR8.jpeg', 'uploads/post/1581826596QNti0SR8EN81Z56vb0O9VqYCk4lpC5NKJDj1EhR8.jpeg', 88.00, 'desactive');
 
 -- --------------------------------------------------------
 
@@ -106,17 +96,16 @@ CREATE TABLE `car_modals` (
   `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `name` varchar(191) NOT NULL,
-  `admin_car_id` int(11) NOT NULL
+  `car_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `car_modals`
 --
 
-INSERT INTO `car_modals` (`id`, `created_at`, `updated_at`, `name`, `admin_car_id`) VALUES
-(2, '2019-12-27 07:13:29', '2019-12-27 07:13:29', 'image', 3),
-(3, '2019-12-27 07:38:41', '2019-12-27 07:38:41', 'image', 3),
-(4, '2019-12-27 07:43:56', '2019-12-27 07:43:56', 'image', 4);
+INSERT INTO `car_modals` (`id`, `created_at`, `updated_at`, `name`, `car_id`) VALUES
+(5, '2020-02-20 01:33:44', '0000-00-00 00:00:00', 'سءسي', 1),
+(6, '2020-02-20 02:15:34', '2020-02-20 07:15:34', 'phpتتت', 1);
 
 -- --------------------------------------------------------
 
@@ -136,10 +125,7 @@ CREATE TABLE `cities` (
 --
 
 INSERT INTO `cities` (`id`, `created_at`, `updated_at`, `name`) VALUES
-(1, NULL, NULL, 'eg'),
-(2, NULL, NULL, 'aa'),
-(3, '2019-12-25 08:47:12', '2019-12-25 08:47:12', 'image'),
-(4, '2019-12-27 07:43:13', '2019-12-27 07:43:13', 'image');
+(1, NULL, '2020-02-20 04:58:01', 'كسم احمد حمدى ةةة');
 
 -- --------------------------------------------------------
 
@@ -164,7 +150,27 @@ CREATE TABLE `client_profiles` (
 --
 
 INSERT INTO `client_profiles` (`id`, `created_at`, `updated_at`, `driclient_id`, `city_id`, `image`, `bloode_type_id`, `age`, `home_gps`) VALUES
-(22, '2019-12-25 05:40:48', '2019-12-25 05:40:49', 8, 1, 'uploads/post/1577234449module_table_bottom.png', 1, 1, '1');
+(1, '2020-02-16 09:15:34', '2020-02-16 09:15:34', 1, 1, 'uploads/post/1581826534GokA6LVRXbM3yxk0Uf2B8R1YkdURwHaL3cj4LVuy.jpeg', 1, 1, '1');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `cridtes`
+--
+
+CREATE TABLE `cridtes` (
+  `id` int(11) NOT NULL,
+  `client_profile_id` int(11) NOT NULL,
+  `img_payments` varchar(191) NOT NULL,
+  `date` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `cridtes`
+--
+
+INSERT INTO `cridtes` (`id`, `client_profile_id`, `img_payments`, `date`) VALUES
+(1, 1, 'uploads/post/1581826626LzJw2PBTZ24L4gsDRR44xZ3c6FCCM9MCxSOOgHPL.jpeg', '2020-02-16 04:17:17');
 
 -- --------------------------------------------------------
 
@@ -185,8 +191,7 @@ CREATE TABLE `destinations` (
 --
 
 INSERT INTO `destinations` (`id`, `created_at`, `updated_at`, `name`, `gps`) VALUES
-(1, '2019-12-27 08:45:13', '2019-12-27 08:45:13', 'image', '212'),
-(2, '2019-12-27 08:45:21', '2019-12-27 08:45:21', 'wqw', 'ewe');
+(3, '2020-02-20 06:08:35', '2020-02-20 06:16:20', 'كسم احمد حمدى', 'كسم احمد حمدى');
 
 -- --------------------------------------------------------
 
@@ -215,8 +220,9 @@ CREATE TABLE `driclients` (
 --
 
 INSERT INTO `driclients` (`id`, `created_at`, `updated_at`, `name`, `nid`, `phone`, `gender`, `email`, `pin_code_phone`, `pin_code_email`, `statue`, `type`, `api_token`) VALUES
-(10, '2019-12-27 09:04:12', '2020-01-29 06:55:26', 'mhmd', '482823082', 1067803033, 'male', 'mdumsdd@gamf.com', NULL, NULL, 'desactive', 'driver', 'CcZ4hZB1ySPkLPgVC3pZ3tdKtLPKoFR4ZSywibNBGJoWPu8uMJyA5UnG1Et2'),
-(15, '2019-12-27 09:04:12', '2019-12-27 11:15:25', 'mhmd', '482823082', 1067803033, 'male', 'mdumsdd@gamf.com', NULL, NULL, 'desactive', 'driver', 'CcZ4hZB1ySPkLPgVC3pZ3tdKtLPKoFR4ZSywibNBGJoWPu8uMJyA5UnG1Et2');
+(1, '2020-02-16 09:14:04', '2020-02-16 09:14:05', 'mhmd', '2121', 111111, 'male', 'mhmd@m.comddd', NULL, NULL, 'active', 'client', '4D0o58KzFAolJrI83mj5bA3WyLynJFOAfyXIZzk9X0cIkXoJxZsufTwyNbU9'),
+(2, '2020-02-16 09:14:19', '2020-02-20 03:23:54', 'mhmd', '2121', 11111111, 'male', 'mhmd@m.csssomddd', NULL, NULL, 'desactive', 'driver', 'Ly8FjzqIOgmcbq12SKnk0bcXtZcarlgvWcbk09qZNAuWy1wYymB52NN0e669'),
+(3, '2020-02-20 04:52:41', '2020-02-20 04:52:41', 'php', NULL, 231, NULL, 'ahmed@dn.com', NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -228,15 +234,15 @@ CREATE TABLE `driver_profiles` (
   `id` int(10) UNSIGNED NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
-  `driclient_id` int(11) NOT NULL,
-  `city_id` int(11) NOT NULL,
-  `image` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `driclient_id` int(11) DEFAULT NULL,
+  `city_id` int(11) DEFAULT NULL,
+  `image` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `rate` double(8,2) DEFAULT NULL,
-  `bloode_type_id` int(11) NOT NULL,
+  `bloode_type_id` int(11) DEFAULT NULL,
   `nidimg` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `dl` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `age` int(11) NOT NULL,
-  `statue` enum('active','desactive') COLLATE utf8mb4_unicode_ci DEFAULT NULL
+  `dl` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `age` int(11) DEFAULT NULL,
+  `statue` enum('تم الانزال','فى الطريق','عائد الى المنزل','لم يركب بعد','رحلة فائتة','على متن المركبة') COLLATE utf8mb4_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -244,8 +250,8 @@ CREATE TABLE `driver_profiles` (
 --
 
 INSERT INTO `driver_profiles` (`id`, `created_at`, `updated_at`, `driclient_id`, `city_id`, `image`, `rate`, `bloode_type_id`, `nidimg`, `dl`, `age`, `statue`) VALUES
-(21, '2019-12-23 11:50:58', '2019-12-23 11:50:59', 10, 1, 'uploads/post/1577151226image.png', NULL, 1, 'uploads/post/15770838592-1.png', 'uploads/post/1577083859module_table_bottom.png', 10, NULL),
-(22, '2019-12-23 11:50:58', '2019-12-23 11:50:59', 15, 1, 'uploads/post/157708385918x36_thumbnail_images_eco.jpg', NULL, 1, 'uploads/post/15770838592-1.png', 'uploads/post/1577083859module_table_bottom.png', 99, NULL);
+(1, '2020-02-16 09:15:01', '2020-02-16 09:15:01', 2, 1, 'uploads/post/1581826501PxThTErpUeiStAyIzpCwnbuTfzVsvNBT7blagAlL.jpeg', NULL, 1, 'uploads/post/1581826501QNti0SR8EN81Z56vb0O9VqYCk4lpC5NKJDj1EhR8.jpeg', 'uploads/post/1581826501PxThTErpUeiStAyIzpCwnbuTfzVsvNBT7blagAlL.jpeg', 1, 'لم يركب بعد'),
+(3, '2020-02-16 09:15:01', '2020-02-16 09:15:01', 1, 1, 'uploads/post/1581826501PxThTErpUeiStAyIzpCwnbuTfzVsvNBT7blagAlL.jpeg', NULL, 1, 'uploads/post/1581826501QNti0SR8EN81Z56vb0O9VqYCk4lpC5NKJDj1EhR8.jpeg', 'uploads/post/1581826501PxThTErpUeiStAyIzpCwnbuTfzVsvNBT7blagAlL.jpeg', 1, 'رحلة فائتة');
 
 -- --------------------------------------------------------
 
@@ -263,7 +269,7 @@ CREATE TABLE `kids` (
   `gender` enum('male','fmale') COLLATE utf8mb4_unicode_ci NOT NULL,
   `destination_id` int(11) NOT NULL,
   `image` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `client_profile_id` int(11) NOT NULL,
+  `driclient_id` int(11) NOT NULL,
   `city_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -271,8 +277,8 @@ CREATE TABLE `kids` (
 -- Dumping data for table `kids`
 --
 
-INSERT INTO `kids` (`id`, `created_at`, `updated_at`, `name`, `age`, `bloode_type_id`, `gender`, `destination_id`, `image`, `client_profile_id`, `city_id`) VALUES
-(1, '2019-12-24 06:07:51', '2019-12-24 06:07:52', 'fwek', 1, 1, 'male', 1, 'uploads/post/1577149672module_table_bottom.png', 20, 1);
+INSERT INTO `kids` (`id`, `created_at`, `updated_at`, `name`, `age`, `bloode_type_id`, `gender`, `destination_id`, `image`, `driclient_id`, `city_id`) VALUES
+(1, '2020-02-16 09:16:03', '2020-02-16 09:16:03', 'fwek', 1, 1, 'male', 1, 'uploads/post/1581826563pvhppOgIZGzDbzP3MdbK4is7oRJsS7ByMmewPSTB.jpeg', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -286,22 +292,6 @@ CREATE TABLE `migrations` (
   `batch` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
---
--- Dumping data for table `migrations`
---
-
-INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
-(1, '2014_10_12_000000_create_users_table', 1),
-(2, '2014_10_12_100000_create_password_resets_table', 1),
-(3, '2019_12_18_230219_create_bloode_types_table', 1),
-(4, '2019_12_18_230219_create_cars_table', 1),
-(5, '2019_12_18_230219_create_cities_table', 1),
-(6, '2019_12_18_230219_create_client_profiles_table', 1),
-(7, '2019_12_18_230219_create_destinations_table', 1),
-(8, '2019_12_18_230219_create_driclients_table', 1),
-(9, '2019_12_18_230219_create_driver_profiles_table', 1),
-(10, '2019_12_18_230219_create_kids_table', 1);
-
 -- --------------------------------------------------------
 
 --
@@ -313,6 +303,45 @@ CREATE TABLE `password_resets` (
   `token` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `payments`
+--
+
+CREATE TABLE `payments` (
+  `id` int(11) NOT NULL,
+  `client_profile_id` int(11) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `driver_profile_id` int(11) NOT NULL,
+  `driclient_id` int(11) NOT NULL,
+  `kid_id` int(11) NOT NULL,
+  `statue` enum('active','desactive') NOT NULL DEFAULT 'desactive',
+  `request_time` timestamp NOT NULL DEFAULT current_timestamp(),
+  `request_img` varchar(191) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `subscription`
+--
+
+CREATE TABLE `subscription` (
+  `id` int(11) NOT NULL,
+  `driver_profile_id` int(11) NOT NULL,
+  `client_profile_id` int(11) NOT NULL,
+  `kid_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `subscription`
+--
+
+INSERT INTO `subscription` (`id`, `driver_profile_id`, `client_profile_id`, `kid_id`) VALUES
+(1, 1, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -336,8 +365,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'bus', 'bus@php.com', NULL, '$2y$10$mhm1yvWef99ZUOj1mHOiFuuJdFvh/FN5fhSjBLIJkL/57sZq8R2j2', NULL, '2019-12-25 07:28:46', '2019-12-25 08:05:21'),
-(2, 'php', 'php@any.com', NULL, '$2y$10$25J/OjZjw0/GSFh6fdahSOHBlUKcgVq6nq54A4EDFMvnnOLBe8zGm', NULL, '2020-01-29 06:53:30', '2020-01-29 06:53:30');
+(1, 'php', 'php@any.com', NULL, '$2y$10$UC8gHea3DdO604PmufGWfuZiyw1thSlZslyMEZvnyUMlkPpAHGI9O', NULL, '2020-02-10 06:50:22', '2020-02-10 06:50:22');
 
 --
 -- Indexes for dumped tables
@@ -380,6 +408,12 @@ ALTER TABLE `client_profiles`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `cridtes`
+--
+ALTER TABLE `cridtes`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `destinations`
 --
 ALTER TABLE `destinations`
@@ -416,6 +450,18 @@ ALTER TABLE `password_resets`
   ADD KEY `password_resets_email_index` (`email`);
 
 --
+-- Indexes for table `payments`
+--
+ALTER TABLE `payments`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `subscription`
+--
+ALTER TABLE `subscription`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
@@ -430,55 +476,61 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `admin_cars`
 --
 ALTER TABLE `admin_cars`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `bloode_types`
 --
 ALTER TABLE `bloode_types`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `cars`
 --
 ALTER TABLE `cars`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `car_modals`
 --
 ALTER TABLE `car_modals`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `cities`
 --
 ALTER TABLE `cities`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `client_profiles`
 --
 ALTER TABLE `client_profiles`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `cridtes`
+--
+ALTER TABLE `cridtes`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `destinations`
 --
 ALTER TABLE `destinations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `driclients`
 --
 ALTER TABLE `driclients`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `driver_profiles`
 --
 ALTER TABLE `driver_profiles`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `kids`
@@ -490,13 +542,25 @@ ALTER TABLE `kids`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `payments`
+--
+ALTER TABLE `payments`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `subscription`
+--
+ALTER TABLE `subscription`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

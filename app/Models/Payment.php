@@ -21,6 +21,11 @@ class Payment extends Model
        
         return $this->belongsTo('App\Models\DriClient','driclient_id');
     }
+    public function credites()
+    {
+       
+        return $this->hasMany('App\Models\Credit');
+    }
    
   
     public function drivers()

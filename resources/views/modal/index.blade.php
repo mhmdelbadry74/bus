@@ -4,45 +4,36 @@
 
 @section('content')
 <section class="content-header">
-      <h1>
-      car Modal  
-       
-      </h1>
-      <ol class="breadcrumb">
-        <li><a href="{{url('/home')}}"><i class="fa fa-dashboard"></i> Home</a></li>
-       
-        <li class="active">Dashboard</li>
-      </ol>
-    </section>
-
-    <!-- Main content -->
-    <section class="content">
-    
- 
-
-      <!-- Default box -->
-      <div class="box">
-        <div class="box-header with-border">
-          <h3 class="box-title">LIST Modal  </h3>
-
-          <div class="box-tools pull-right">
-            <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip"
-                    title="Collapse">
-              <i class="fa fa-minus"></i></button>
-            <button type="button" class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="Remove">
-              <i class="fa fa-times"></i></button>
+  <div class="row">
+    <div class="col-12 pa-2">
+      <div class="row">
+        
+        <div class="col-md-6">
+          <div class="content-header"> السيارات</div>
+      
+            
+          
+          </div>
+          <div class="col-md-6 text-right">
+            <a type="button" href="{{url(route('modal.create'))}}" class="btn btn-raised btn-success btn-min-width mr-1 mb-1 fontm"><i class="ft-plus-square fa-1x"></i>
+              اضافة موديل</a>
           </div>
         </div>
+      </div>
 
-
-
-        
-
-
-
+    </div>
+    <section id="extended">
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="card">
+            <div class="card-header">
+              <h4 class="card-title"> قائمة السيارات</h4>
+            </div>
+            <div class="card-content">
+              <div class="card-body table-responsive">
 
         <div class="box-body">
-        <a href="{{url(route('modal.create'))}}" class="btn btn-primary" ><i class="fa fa-plus"></i> Add car  modal  </a>
+        
 
       
         @include('flash::message')
@@ -55,14 +46,14 @@
         <th>#</th>
         
         <th>الاسم  </th>
-        <th>Modal   </th>
+        <th>نوع المركبة    </th>
        
        
         
      
         
-        <th class="text-center">edit </th>
-        <th class="text-center">delete </th>
+        <th class="text-center">تعديل  </th>
+        <th class="text-center">حذف </th>
         </tr>
        </thead>
        <tbody>
@@ -71,7 +62,7 @@
         <td>{{$loop->iteration}} </td>
        
         <td>{{$recorde->name}} </td>
-        <td>{{optional($recorde->admin_cars)->name}} </td>
+        <td>{{optional($recorde->admin_cars)->modal}} </td>
        
        
       
@@ -87,7 +78,7 @@
                     'method' => 'delete',
 
         ])!!}
-        <button type="submit" class="btn btn-danger"> <i class="fa fa-trash-o"> </i> </button>
+        <button type="submit" class="btn btn-danger"> <i class="ft-x font-medium-3"> </i> </button>
 
         {!! Form::close() !!}
         </td>

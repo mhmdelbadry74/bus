@@ -301,6 +301,26 @@ class MainController extends Controller{
         }
         
     }
+
+    public function driver_statues(Request $request){
+
+        
+       
+        $check_entry_id = DriClient::select('api_token')->where('id',$request->driclient_id)->get();
+        // dd($check_entry_id);
+            $token_of_insert_id = $check_entry_id[0]['api_token'];
+            $current_token = $request->api_token;
+            $token_of_insert_id = (count($check_entry_id)>0) ? $check_entry_id[0]['api_token'] : null ;
+            $tokens = [$token_of_insert_id,$request->api_token];
+
+            if ($tokens[0] !== $tokens[1]) {
+                return response('you are not autolizate ',403)->header('content-type','text/plain');
+            }      
+           $statues = DriveProfile::select('statue')->where('id',$request->driver_profile_id)->get();
+                return responsejson(1,' تم العرض بنجاح  ' ,$statues );
+             
+
+    }
 }
 
 ?> 

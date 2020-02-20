@@ -38,7 +38,7 @@ class ClientProfile extends Model
 
     public function drclients()
     {
-        return $this->belongsTo('App\Models\Destination');
+        return $this->belongsTo('App\Models\DriClient','driclient_id');
     }
 
 }

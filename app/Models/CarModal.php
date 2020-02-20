@@ -9,11 +9,11 @@ class CarModal extends Model
 
     protected $table = 'car_modals';
     public $timestamps = true;
-    protected $fillable = array('name','admin_car_id');
+    protected $fillable = array('name','car_id');
 
     public function admin_cars()
     {
-        return $this->belongsTo('App\Models\AdminCar','admin_car_id');
+        return $this->belongsTo('App\Models\Car','car_id');
     }
     
    

@@ -22,7 +22,7 @@ class Kid extends Model
     }
     public function subs()
     {
-        return $this->hasMany('App\Models\Subscription');
+        return $this->hasMany('App\Models\Subscription','Kid_id');
     }
     public function cities()
     {

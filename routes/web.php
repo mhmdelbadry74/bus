@@ -25,6 +25,7 @@ Route::group(['middleware'=>'auth'],function(){
     Route::resource('des','DestinionController');
     Route::resource('driver','DriverController');
     Route::resource('payments','PaymentController');
+    Route::resource('subs','SubController');
     
     Route::get('active/{id}' , 'DriverController@active');
     Route::get('disactive/{id}' , 'DriverController@disactive');

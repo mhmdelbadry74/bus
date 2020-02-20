@@ -15,5 +15,9 @@ class Car extends Model
     {
         return $this->belongsTo('App\Models\DriClient','driclient_id');
     }
+    public function cars()
+    {
+        return $this->hasMany('App\Models\CarModal');
+    }
 
 }

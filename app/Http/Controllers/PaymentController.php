@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Payment;
+use App\Models\Subscription;
+use App\Models\Credit;
 
 class PaymentController extends Controller
 {
@@ -34,7 +36,12 @@ class PaymentController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-   
+    public function show(){
+        $recorde = Payment::select('id','client_profile_id','driver_profile_id','kid_id','request_img')->get()->toArray();
+        Subscription::add_subs($recorde[0]);
+        Credit::add_credit($recorde[0]);
+        return back();
+    }
 
     /**
      * Show the form for editing the specified resource.
@@ -79,6 +86,9 @@ class PaymentController extends Controller
             $recorde->save();
         }
         return back();
+    }
+    public function add_sub(Request $request){
+        $recorde = Payment::select('client_profile_id','driver_profile_id','kid_id')->get();
     }
     
 }

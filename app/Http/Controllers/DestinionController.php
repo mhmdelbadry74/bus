@@ -50,7 +50,7 @@ class DestinionController extends Controller
         ];
         $messages = [
             'name.required' => 'من فضلك ادخل الاسم ',
-            'gps.required' => 'من فضلك ادخل gps ',
+            'gps.required' => 'من فضلك ادخل خريطة جوجل	  ',
             
         ];
         $this->validate($request,$rules,$messages);

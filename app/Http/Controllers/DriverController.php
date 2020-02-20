@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\DriClient;
+use App\Models\DriveProfile;
 
 class DriverController extends Controller
 {
@@ -29,7 +30,7 @@ class DriverController extends Controller
     public function create()
     {
         //
-      //  return view('cities.create');
+        return view('driver.create');
 
     }
 
@@ -41,7 +42,31 @@ class DriverController extends Controller
      */
     public function store(Request $request)
     {
-       
+        $rules = [
+            
+            'name' => 'required',
+            'nld' => 'required',
+            'phone' => 'required',
+            'email' => 'required',
+            'dis' => 'required',
+            
+           
+         
+        ];
+        $messages = [
+            'name.required' => 'من فضلك ادخل الاسم ',
+            'nld.required' => 'من فضلك ادخل رقم الهوية ',
+            'phone.required' => 'من فضلك ادخل رقم الجوال ',
+            'email.required' => 'من فضلك ادخل البريد الالكترونى ',
+            'dis.required' => 'من فضلك ادخل الحى المراد التوصيل الية',
+            
+        ];
+        $this->validate($request,$rules,$messages);
+        $recordes= DriClient::create($request->all());
+        $recordes->save();
+
+        flash()->success("Success");
+        return redirect('driver');
             
     }
 
