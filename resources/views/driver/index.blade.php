@@ -63,7 +63,7 @@
        <tbody>
        @foreach($recordes as $recorde)
         <tr>
-          @if($recorde->statue == 'desactive')
+          
         <td>{{$loop->iteration}} </td>
        
         <td>{{$recorde->name}} </td>
@@ -89,7 +89,7 @@
         
           <a href="{{url(route('driver.show',$recorde->id))}}" class="btn btn-success btn-xs"> <i class="ft-eye font-medium-3 " ></i> </a> 
         </td>
-    @endif
+    
 
         @endif
       

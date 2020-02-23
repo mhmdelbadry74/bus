@@ -62,7 +62,7 @@
         <td>{{$loop->iteration}} </td>
        
         <td>{{$recorde->name}} </td>
-        <td>{{optional($recorde->admin_cars)->modal}} </td>
+        <td>{{optional($recorde->admin_cars)->name}} </td>
        
        
       

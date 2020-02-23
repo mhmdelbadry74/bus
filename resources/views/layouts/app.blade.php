@@ -59,7 +59,7 @@
             <ul id="main-menu-navigation" data-menu="menu-navigation" data-scroll-to-active="true" class="navigation navigation-main">
               <li class="nav-item active"><a href="{{url('home')}}"><i class="ft-home"></i><span data-i18n="" class="menu-title">الرئيسية</span></a>
               </li>
-              <li class=" nav-item"><a href="users.html"><i class="ft-users"></i><span data-i18n="" class="menu-title">المستخدمين</span></a>
+            <li class=" nav-item"><a href="{{url('users')}}"><i class="ft-users"></i><span data-i18n="" class="menu-title">المستخدمين</span></a>
               </li>
               <li class=" nav-item"><a href="{{url('driver')}}"><i class="icon-support"></i><span data-i18n="" class="menu-title">السائقين</span></a>
               </li>
@@ -90,12 +90,7 @@
         <div class="container-fluid">
           <div class="navbar-header">
             <button type="button" data-toggle="collapse" class="navbar-toggle d-lg-none float-left"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button><span class="d-lg-none navbar-right navbar-collapse-toggle"><a aria-controls="navbarSupportedContent" href="javascript:;" class="open-navbar-container black"><i class="ft-more-vertical"></i></a></span>
-            <form role="search" class="navbar-form navbar-right mt-1">
-              <div class="position-relative has-icon-right">
-                <input type="text" placeholder="البحث" class="form-control round"/>
-                <div class="form-control-position"><i class="ft-search"></i></div>
-              </div>
-            </form>
+            
           </div>
           <div class="navbar-container">
             <div id="navbarSupportedContent" class="collapse navbar-collapse">

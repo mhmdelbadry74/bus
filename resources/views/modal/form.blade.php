@@ -1,7 +1,7 @@
 
-@inject('modal','App\Models\Car')
+@inject('modal','App\Models\AdminCar')
 <?php
- $modals= $modal->pluck('modal','id')->toArray();
+ $modals= $modal->pluck('name','id')->toArray();
 ?>
 
 
@@ -29,7 +29,7 @@
                       <div class="form-group row">
                         <label class="col-md-3 label-control" for="name"> car       </label>
                         <div class="col-md-9">
-                          {!! Form::select('car_id',$modals,null,['class'=>'form-control']) !!}
+                          {!! Form::select('admin_car_id',$modals,null,['class'=>'form-control']) !!}
 
                                       </div>
                                     </div>
