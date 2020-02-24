@@ -120,7 +120,8 @@ class UserController extends Controller
             'permissions'=> 'required|min:1'
 
         ]);
-        $request_data = $request->except(['permissions']);
+        $request_data = $request->except(['password','password_confirmation','permissions']);
+        $request_data['password'] = bcrypt($request->password);
         $user->update($request_data);
         $user->syncPermissions($request->permissions);
        

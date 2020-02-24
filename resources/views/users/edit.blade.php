@@ -36,7 +36,15 @@
                             <label>@lang('البريد الالكترونى')</label>
                             <input type="email" name="email" class="form-control" value="{{ $user->email }}">
                         </div>
+                        <div class="form-group">
+                            <label>@lang('كلمة المرور ')</label>
+                            <input type="password" name="password" class="form-control">
+                        </div>
 
+                        <div class="form-group">
+                            <label>@lang('تاكيد كلمة المرور')</label>
+                            <input type="password" name="password_confirmation" class="form-control">
+                        </div>
                        
 
                         <div class="form-group">
