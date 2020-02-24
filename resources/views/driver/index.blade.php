@@ -15,8 +15,11 @@
         
         </div>
         <div class="col-md-6 text-right">
+          @if (auth()->user()->hasPermission('create_users'))
           <a type="button" href="{{url(route('driver.create'))}}" class="btn btn-raised btn-success btn-min-width mr-1 mb-1 fontm"><i class="ft-plus-square fa-1x"></i>
             اضافة سائق</a>
+          
+        @endif
         </div>
       </div>
     </div>

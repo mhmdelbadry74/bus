@@ -14,8 +14,10 @@
         
         </div>
         <div class="col-md-6 text-right">
+          @if (auth()->user()->hasPermission('create_users'))
           <a type="button" href="{{url(route('des.create'))}}" class="btn btn-raised btn-success btn-min-width mr-1 mb-1 fontm"><i class="ft-plus-square fa-1x"></i>
             اضافة حىء</a>
+            @endif
         </div>
       </div>
     </div>
@@ -64,10 +66,14 @@
  
         
         <td class="text-center">
-        
+          @if (auth()->user()->hasPermission('update_users'))        
           <a href="{{url(route('des.edit',$recorde->id))}}" class="btn btn-success btn-xs"> <i class="ft-edit-2 font-medium-3" ></i> </a> 
+          @else
+          <a href="#" class="btn btn-info btn-sm disabled"><i class="fa fa-edit"></i> تعديل</a>
+      @endif
         </td>
         <td class="text-center">
+          @if (auth()->user()->hasPermission('delete_users'))
         {!! Form::open ([
           'action' => ['DestinionController@destroy',$recorde->id],
                     'method' => 'delete',
@@ -76,6 +82,9 @@
         <button type="submit" class="btn btn-danger"> <i class="ft-x font-medium-3"> </i> </button>
 
         {!! Form::close() !!}
+        @else
+        <button class="btn btn-danger btn-sm disabled"><i class="fa fa-trash"></i> @lang('حذف')</button>
+    @endif
         </td>
         </tr>
 

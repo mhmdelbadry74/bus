@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@inject('model','App\Models\Modal')
+@inject('model','App\Models\CarModal')
 @section('content')
 <section class="content-header">
   <div class="row">

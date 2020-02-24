@@ -57,6 +57,7 @@
         <div class="sidebar-content">
           <div class="nav-container">
             <ul id="main-menu-navigation" data-menu="menu-navigation" data-scroll-to-active="true" class="navigation navigation-main">
+
               <li class="nav-item active"><a href="{{url('home')}}"><i class="ft-home"></i><span data-i18n="" class="menu-title">الرئيسية</span></a>
               </li>
             <li class=" nav-item"><a href="{{url('users')}}"><i class="ft-users"></i><span data-i18n="" class="menu-title">المستخدمين</span></a>
@@ -67,12 +68,15 @@
               </li>
               <li class=" nav-item"><a href="{{url('des')}}"><i class="ft-map-pin"></i><span data-i18n="" class="menu-title">الاحياء</span></a>
               </li>
-              <li class=" nav-item"><a href="{{url('modal')}}"><i class="fas fa-car-alt"></i><span data-i18n="" class="menu-title">موديل المركبة</span></a>
               </li>
               <li class=" nav-item"><a href="{{url('cars')}}"><i class="fas fa-car"></i><span data-i18n="" class="menu-title">المركبة</span></a>
+                <li class=" nav-item"><a href="{{url('modal')}}"><i class="fas fa-car-alt"></i><span data-i18n="" class="menu-title">موديل المركبة</span></a>
+
                 <li class=" nav-item"><a href="{{url('subs')}}"><i class="fas fa-car"></i><span data-i18n="" class="menu-title">الاشتراكات</span></a>
                   <li class=" nav-item"><a href="{{url('payments')}}"><i class="fas fa-car"></i><span data-i18n="" class="menu-title">قائمة الدفع</span></a>
+                    <li class=" nav-item"><a href="{{url('change-password')}}"><i class="fas fa-car"></i><span data-i18n="" class="menu-title"> تغير كلمة المرور</span></a>
               </li>
+              
             </ul>
           </div>
         </div>
@@ -146,9 +150,7 @@
         <!-- END : End Main Content-->
 
         <!-- BEGIN : Footer-->
-        <footer class="footer footer-static footer-light">
-          <p class="clearfix text-muted text-sm-center px-2"><span>Copyright  &copy; 2020 <a href="https://takwen.sa/" id="pixinventLink" target="_blank" class="text-bold-800 primary darken-2">PROJECT TAKWEN </a>, All rights reserved. </span></p>
-        </footer>
+        
         <!-- End : Footer-->
 
       </div>

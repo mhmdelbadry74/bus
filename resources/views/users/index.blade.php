@@ -68,7 +68,7 @@
                                         @if (auth()->user()->hasPermission('update_users'))
                                             <a href="{{ route('users.edit', $user->id) }}" class="btn btn-info btn-sm"><i class="fa fa-edit"></i> @lang('تعديل')</a>
                                         @else
-                                            <a href="#" class="btn btn-info btn-sm disabled"><i class="fa fa-edit"></i> @lang('تعديل')</a>
+                                            <a href="#" class="btn btn-info btn-sm disabled"><i class="fa fa-edit"></i> تعديل</a>
                                         @endif
                                         @if (auth()->user()->hasPermission('delete_users'))
                                             <form action="{{ route('users.destroy', $user->id) }}" method="post" style="display: inline-block">
