@@ -23,6 +23,7 @@ Route::group(['prefix'=>'v1','namespace'=>'Api'],function(){
     Route::group(['prefix'=>'Genral','namespace'=>'Genral'],function(){
         Route::get('cities','GenralController@city');
         Route::post('icities','GenralController@icity');
+        Route::post('check_data','GenralController@check_data');
         Route::get('blood','GenralController@blood_type');
         Route::post('iblood','GenralController@iblood_type');
         Route::get('admicar','GenralController@admin_car');

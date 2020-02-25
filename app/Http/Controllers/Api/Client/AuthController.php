@@ -67,7 +67,7 @@ class AuthController extends Controller {
                 'client' => $client
             ]);
         }else{
-            return response('لا يوجد حساب ',406)->header('content-type','text/plain');
+            return responseJson(0,'لا يوجد حساب');
         }
     
     }
@@ -85,7 +85,7 @@ class AuthController extends Controller {
                 'client' => $client ,
             ]);
         }else{
-            return response('الرمز غير صالح  ',406)->header('content-type','text/plain');
+            return responseJson(0,'الرمز غير صالح');
         }
        
     }
@@ -108,7 +108,7 @@ class AuthController extends Controller {
                 'client' => $client
             ]);
         }else{
-            return response('لا يوجد حساب ',406)->header('content-type','text/plain');
+            return responseJson(0,'لا يوجد حساب');
         }
     
     }

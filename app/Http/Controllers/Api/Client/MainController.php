@@ -45,14 +45,14 @@ class MainController extends Controller{
             $current_token = $request->api_token;
             $tokens = [$token_of_insert_id,$current_token];
             if ($tokens[0] !== $tokens[1]) {
-                return response('you are not autolizate ',403)->header('content-type','text/plain');
+                return responseJson(0,'غير مصرح بك  ');
             }else{
                 $check_profile_id = ClientProfile::select('driclient_id')->where('driclient_id',$request->driclient_id)->get();
              //   dd($check_profile_id);
                 $profile_exist = (count($check_profile_id)>0) ? true : false ;
 
                 if ($profile_exist) {
-                    return response('profile aleady exist ',403)->header('content-type','text/plain');
+                    return responseJson(0,'  الحساب موجود بالفعل  ');
                 }else{
                 $profile = ClientProfile::create($request->all());
                 if ($request->hasFile('image')) {
@@ -101,14 +101,14 @@ class MainController extends Controller{
             $current_token = $request->api_token;
             $tokens = [$token_of_insert_id,$current_token];
             if ($tokens[0] !== $tokens[1]) {
-                return response('you are not autolizate ',403)->header('content-type','text/plain');
+                return responseJson(0,'غير مصرح بك  ');
             }else{
                 $check_profile_id = DriveProfile::select('driclient_id')->where('driclient_id',$request->driclient_id)->get();
              //   dd($check_profile_id);
                 $profile_exist = (count($check_profile_id)>0) ? true : false ;
 
                 if ($profile_exist) {
-                    return response('profile aleady exist ',403)->header('content-type','text/plain');
+                    return responseJson(0,'  الحساب موجد بالفعل  ');
                 }else{
                     $profile = DriveProfile::create($request->all());
 
@@ -161,7 +161,7 @@ class MainController extends Controller{
             $tokens = [$token_of_insert_id,$request->api_token];
 
             if ($tokens[0] !== $tokens[1]) {
-                return response('you are not autolizate ',403)->header('content-type','text/plain');
+                return responseJson(0,'غير مصرح بك  ');
             }
             else {
                 $profile = Kid::create($request->all());
@@ -209,7 +209,7 @@ class MainController extends Controller{
  
     
                 if ($tokens[0] !== $tokens[1]) {
-                    return response('you are not autolizate ',403)->header('content-type','text/plain');
+                    return responseJson(0,'غير مصرح بك  ');
                 }
                 else {
                     $profile = Car::create($request->all());
@@ -286,7 +286,7 @@ class MainController extends Controller{
         $tokens = [$token_of_insert_id,$request->api_token];
 
         if ($tokens[0] !== $tokens[1]) {
-            return response('you are not autolizate ',403)->header('content-type','text/plain');
+            return responseJson(0,'غير مصرح بك  ');
         }else{
             $payments =Payment::create($request->all());
             if ($request->hasFile('request_img')) {
@@ -314,13 +314,17 @@ class MainController extends Controller{
             $tokens = [$token_of_insert_id,$request->api_token];
 
             if ($tokens[0] !== $tokens[1]) {
-                return response('you are not autolizate ',403)->header('content-type','text/plain');
+                return responseJson(0,'غير مصرح بك  ');
+
             }      
            $statues = DriveProfile::select('statue')->where('id',$request->driver_profile_id)->get();
                 return responsejson(1,' تم العرض بنجاح  ' ,$statues );
              
 
     }
+
+
+    
 }
 
 ?> 
