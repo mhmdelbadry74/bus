@@ -14,11 +14,12 @@ class CreateDriverProfilesTable extends Migration {
 			$table->integer('city_id');
 			$table->string('image');
 			$table->enum('gender', array('male','fmale'));
-			$table->float('rate');
+			$table->float('rate')->nullable();
+			$table->integer('age');
 			$table->integer('bloode_type_id');
-			$table->string('img_id');
+			$table->string('nidimg');
 			$table->string('dl');
-			$table->integer('car_id');
+			$table->integer('car_id')->nullable();
 		});
 	}
 
