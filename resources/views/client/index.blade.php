@@ -9,15 +9,15 @@
     <div class="row">
       
       <div class="col-md-6">
-        <div class="content-header"> السائقين</div>
+        <div class="content-header"> العملاء</div>
     
           
         
         </div>
         <div class="col-md-6 text-right">
           @if (auth()->user()->hasPermission('create_users'))
-          <a type="button" href="{{url(route('driver.create'))}}" class="btn btn-raised btn-success btn-min-width mr-1 mb-1 fontm"><i class="ft-plus-square fa-1x"></i>
-            اضافة سائق</a>
+          <a type="button" href="{{url(route('client.create'))}}" class="btn btn-raised btn-success btn-min-width mr-1 mb-1 fontm"><i class="ft-plus-square fa-1x"></i>
+            اضافة عميل</a>
           
         @endif
         </div>
@@ -29,7 +29,7 @@
     <div class="col-sm-12">
       <div class="card">
         <div class="card-header">
-          <h4 class="card-title"> قائمة السائقين</h4>
+          <h4 class="card-title"> قائمة العملاء</h4>
         </div>
 
 
@@ -66,7 +66,7 @@
        <tbody>
        @foreach($recordes as $recorde)
         <tr>
-          @if($recorde->type == 'driver')
+          @if($recorde->type == 'client')
         <td>{{$loop->iteration}} </td>
        
         <td>{{$recorde->name}} </td>
@@ -90,13 +90,14 @@
         </td>
         <td class="text-center">
         
-          <a href="{{url(route('driver.show',$recorde->id))}}" class="btn btn-success btn-xs"> <i class="ft-eye font-medium-3 " ></i> </a> 
+          <a href="{{url(route('client.show',$recorde->id))}}" class="btn btn-success btn-xs"> <i class="ft-eye font-medium-3 " ></i> </a> 
         </td>
     
 
         @endif
         @endif
       
+ 
         
        
         </tr>

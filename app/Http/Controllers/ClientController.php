@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\DriClient;
 use App\Models\DriveProfile;
 
-class DriverController extends Controller
+class ClientController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,7 +18,7 @@ class DriverController extends Controller
         //
         
         $recordes =DriClient::get();
-        return view('driver.index',compact('recordes'));
+        return view('client.index',compact('recordes'));
     }
 
    
@@ -30,7 +30,7 @@ class DriverController extends Controller
     public function create()
     {
         //
-        return view('driver.create');
+        return view('client.create');
 
     }
 
@@ -64,12 +64,12 @@ class DriverController extends Controller
         $this->validate($request,$rules,$messages);
         $recordes= DriClient::create($request->all());
         $recordes->api_token=str_random(60);
-        $recordes->type = $recordes->type ?? 'driver' ;
-        $recordes->statue = $recordes->statue ?? 'desactive' ;
+        $recordes->type = $recordes->type ?? 'client' ;
+        $recordes->statue = $recordes->statue ?? 'active' ;
         $recordes->gender = $recordes->gender;
         $recordes->save();
         flash()->success("Success");
-        return redirect('driver');
+        return redirect('client');
             
     }
 
@@ -84,7 +84,7 @@ class DriverController extends Controller
         //
         $drive = DriClient::findOrFail($id);
         //dd($records);
-        return view('driver.show', compact('drive'));
+        return view('client.show', compact('client'));
     }
 
     /**

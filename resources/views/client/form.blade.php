@@ -82,7 +82,7 @@
     
     
       <div class="form-actions text-left">
-        <a type="button" href="{{url(route('driver.index'))}}"class="btn btn-raised btn-warning mr-1">
+        <a type="button" href="{{url(route('client.index'))}}"class="btn btn-raised btn-warning mr-1">
           <i class="ft-x"></i> الغاء
         </a>
         

@@ -24,6 +24,7 @@ Route::group(['middleware'=>'auth'],function(){
     Route::resource('modal','ModalCarController');
     Route::resource('des','DestinionController');
     Route::resource('driver','DriverController');
+    Route::resource('client','ClientController');
     Route::resource('payments','PaymentController');
     Route::resource('subs','SubController');
     Route::resource('users','UserController');

@@ -11,7 +11,7 @@ class DriClient extends Model
     public $timestamps = true;
     protected $fillable = array('name', 'nid', 'api_token','phone', 'gender', 'email', 'pin_code_phone', 'pin_code_email', 'statue', 'type');
   //  protected $hidden = array('api_token');
-
+  
     public function drivers()
     {
         return $this->hasMany('App\Models\DriveProfile','driclient_id');

@@ -68,28 +68,13 @@ class GenralController extends Controller {
     }
     public function check_data(Request $request){
         $validator = validator()->make($request->all(), [
-            'phone' => 'required',
-            'name' => 'required',
-            'email' => 'required',
+            'email' => 'required|email|unique:driclients',
+            'phone' => 'required|unique:driclients',
         ]);
         if ($validator->fails()) {
             return responsejson(0, $validator->errors()->first(), $validator->errors());
         }
-        $client = DriClient::select('phone','name','email')->where('phone' , $request->phone)->where('name' , $request->name)->where('email' , $request->email)->first();
-     //   dd($request->api_token);
-        if ($client) {
-            $client->phone;
-            $client->name;
-            $client->email;
-            $client->save();
-  return responseJson(1, 'مرحبا بك ', [
-                
-                'client' => $client
-            ]);
-        }else{
-            return responseJson(0,'لا يوجد حساب');
-        }
-    
+        return responsejson(0,'حاول مرة اخرى');
     }
     
 }

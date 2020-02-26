@@ -63,6 +63,7 @@
             <li class=" nav-item"><a href="{{url('users')}}"><i class="ft-users"></i><span data-i18n="" class="menu-title">المستخدمين</span></a>
               </li>
               <li class=" nav-item"><a href="{{url('driver')}}"><i class="icon-support"></i><span data-i18n="" class="menu-title">السائقين</span></a>
+                <li class=" nav-item"><a href="{{url('client')}}"><i class="icon-support"></i><span data-i18n="" class="menu-title">العملاء</span></a>
               </li>
               <li class=" nav-item"><a href="{{url('cities')}}"><i class="ft-map"></i><span data-i18n="" class="menu-title">المدن</span></a>
               </li>
