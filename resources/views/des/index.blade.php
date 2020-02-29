@@ -8,7 +8,7 @@
     <div class="row">
       
       <div class="col-md-6">
-        <div class="content-header"> الاحياء</div>
+        <div class="content-header"> المدارس</div>
     
           
         
@@ -16,7 +16,7 @@
         <div class="col-md-6 text-right">
           @if (auth()->user()->hasPermission('create_users'))
           <a type="button" href="{{url(route('des.create'))}}" class="btn btn-raised btn-success btn-min-width mr-1 mb-1 fontm"><i class="ft-plus-square fa-1x"></i>
-            اضافة حىء</a>
+            اضافة مدرسة</a>
             @endif
         </div>
       </div>
@@ -27,7 +27,7 @@
     <div class="col-sm-12">
       <div class="card">
         <div class="card-header">
-          <h4 class="card-title"> قائمة الاحياء</h4>
+          <h4 class="card-title"> قائمة المدارس</h4>
         </div>
         <div class="card-content">
           <div class="card-body table-responsive">
@@ -45,6 +45,7 @@
         
         <th>الاسم  </th>
         <th>خريطة جوجل  </th>
+        <th> المدرسة  </th>
        
        
         
@@ -61,6 +62,7 @@
        
         <td>{{$recorde->name}} </td>
         <td>{{$recorde->gps}} </td>
+        <td>{{optional($recorde->cities)->name}} </td>
        
       
  

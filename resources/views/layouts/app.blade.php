@@ -67,7 +67,7 @@
               </li>
               <li class=" nav-item"><a href="{{url('cities')}}"><i class="ft-map"></i><span data-i18n="" class="menu-title">المدن</span></a>
               </li>
-              <li class=" nav-item"><a href="{{url('des')}}"><i class="ft-map-pin"></i><span data-i18n="" class="menu-title">الاحياء</span></a>
+              <li class=" nav-item"><a href="{{url('des')}}"><i class="ft-map-pin"></i><span data-i18n="" class="menu-title">المدارس</span></a>
               </li>
               </li>
               <li class=" nav-item"><a href="{{url('cars')}}"><i class="fas fa-car"></i><span data-i18n="" class="menu-title">المركبة</span></a>

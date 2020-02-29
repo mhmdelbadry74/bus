@@ -17,7 +17,6 @@ class CreateKidsTable extends Migration {
 			$table->integer('destination_id');
 			$table->string('image');
 			$table->integer('client_profile_id');
-			$table->integer('city_id');
 		});
 	}
 

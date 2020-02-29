@@ -54,6 +54,11 @@ class GenralController extends Controller {
         return  responsejson(1, 'Success', $admin_car);
 
     }
+    public function destinion_school(Request $request){
+        $schools = Destination::get();
+        return  responsejson(1, 'Success', $schools);
+
+    }
 
 
     public function car_modal(Request $request){

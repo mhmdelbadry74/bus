@@ -9,7 +9,7 @@ class Kid extends Model
 
     protected $table = 'kids';
     public $timestamps = true;
-    protected $fillable = array('name', 'age', 'bloode_type_id', 'gender', 'destination_id', 'image', 'driclient_id', 'city_id');
+    protected $fillable = array('name', 'age', 'bloode_type_id', 'gender', 'destination_id', 'image', 'driclient_id');
 
     public function blood_typs()
     {

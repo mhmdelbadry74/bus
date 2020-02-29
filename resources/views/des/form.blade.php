@@ -1,5 +1,8 @@
 
-
+@inject('modal','App\Models\City')
+<?php
+ $modals= $modal->pluck('name','id')->toArray();
+?>
 
 <div class="row">
   <div class="col-md-12">
@@ -14,14 +17,20 @@
           
            
           <div class="form-group row">
-          <label class="col-md-3 label-control" for="name"> الاسم       </label>
+          <label class="col-md-3 label-control" for="name"> اسم المدرسة       </label>
           <div class="col-md-9">
       {!! Form::text('name',null,[
             'class'=>'form-control'
             ]) !!}
                         </div>
                       </div>
+                      <div class="form-group row">
+                        <label class="col-md-3 label-control" for="city_id"> المدينة        </label>
+                        <div class="col-md-9">
+                          {!! Form::select('city_id',$modals,null,['class'=>'form-control']) !!}
 
+                                      </div>
+                                    </div>
                       <div class="form-group row">
                         <label class="col-md-3 label-control" for="gps"> خريطة جوجل	       </label>
                         <div class="col-md-9">

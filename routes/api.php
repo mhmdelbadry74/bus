@@ -29,6 +29,7 @@ Route::group(['prefix'=>'v1','namespace'=>'Api'],function(){
         Route::get('admicar','GenralController@admin_car');
         Route::get('carmodal','GenralController@car_modal');
         Route::get('destinion','GenralController@destinion');
+        Route::get('destinion_school','GenralController@destinion_school');
 
     });
     Route::group(['prefix'=>'client','namespace'=>'Client'],function(){

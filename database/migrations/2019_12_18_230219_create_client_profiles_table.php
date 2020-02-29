@@ -11,10 +11,9 @@ class CreateClientProfilesTable extends Migration {
 			$table->increments('id');
 			$table->timestamps();
 			$table->integer('driclient_id');
-			$table->integer('city_id');
 			$table->string('image');
 			$table->integer('bloode_type_id');
-			$table->integer('age');
+			$table->integer('age')->nullable();
 			$table->string('home_gps');
 		});
 	}

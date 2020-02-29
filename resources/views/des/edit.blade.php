@@ -7,7 +7,7 @@
 <section class="content-header">
   <div class="row">
     <div class="col-sm-12">
-      <div class="content-header">تعديل حي</div>
+      <div class="content-header">تعديل المدرسة </div>
     </div>
   </div>
   <div class="row">

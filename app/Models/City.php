@@ -26,4 +26,9 @@ class City extends Model
         return $this->hasMany('App\Models\ClientProfile');
     }
 
+    public function des()
+    {
+        return $this->hasMany('App\Models\Destination');
+    }
+
 }

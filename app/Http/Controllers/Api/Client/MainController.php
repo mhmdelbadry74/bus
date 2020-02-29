@@ -26,9 +26,6 @@ class MainController extends Controller{
         {
             $valditor=Validator()->make($request->all(),[
                 'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-                'city_id' => 'required',
-                'bloode_type_id' => 'required',
-                'age' => 'required',
                 'home_gps' => 'required' ,
                 'driclient_id' =>'required',
                 'type' =>'required|in:client'
@@ -80,11 +77,7 @@ class MainController extends Controller{
         {
             $valditor=Validator()->make($request->all(),[
                 'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-                'nidimg' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-                'dl' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
                 'city_id' => 'required',
-                'bloode_type_id' => 'required',
-                'age' => 'required',
                 'driclient_id' =>'required',
                 'type' =>'required|in:driver'
     
@@ -112,7 +105,7 @@ class MainController extends Controller{
                 }else{
                     $profile = DriveProfile::create($request->all());
 
-               $arr_img=['dl','nidimg','image'] ; 
+               $arr_img=['image'] ; 
                
                     foreach ($arr_img as $key) {
                 
@@ -142,7 +135,6 @@ class MainController extends Controller{
         {
             $valditor=Validator()->make($request->all(),[
                 'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-                'city_id' => 'required',
                 'bloode_type_id' => 'required',
                 'age' => 'required',
                 'name' => 'required|unique:kids',
@@ -180,7 +172,7 @@ class MainController extends Controller{
 
         // end of Fun 
 
-        public function car_profile(Request $request){
+       public function car_profile(Request $request){
         
             {
                 $valditor=Validator()->make($request->all(),[
@@ -234,8 +226,11 @@ class MainController extends Controller{
                    
                  
                 }
-            }}
+            }
+        } 
 
+
+      
 
             public function staueDriver(Request $request){
                 $statue = DriveProfile::select('statue')->get() ;

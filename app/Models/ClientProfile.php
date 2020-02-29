@@ -10,7 +10,7 @@ class ClientProfile extends Model
 
     protected $table = 'client_profiles';
     public $timestamps = true;
-    protected $fillable = array('driclient_id', 'city_id', 'image', 'bloode_type_id', 'age', 'home_gps');
+    protected $fillable = array('driclient_id', 'image', 'bloode_type_id', 'age', 'home_gps');
 
     public function kids()
     {
