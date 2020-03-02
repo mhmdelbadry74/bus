@@ -14,6 +14,7 @@ use App\Models\DriveProfile;
 use App\Models\Kid;
 use App\Models\Car;
 use App\Models\Payment;
+use App\Models\Subscription;
 
 class MainController extends Controller{
 
@@ -253,27 +254,6 @@ class MainController extends Controller{
         $client = DriClient::select('api_token')->where('id',$request->client_profile_id)->get();
         $driver = DriClient::select('api_token')->where('id',$request->driver_profile_id)->get();
         $kid = kid::select('id')->where('id',$request->kid_id)->get();
-
-
-
-
-
-
-
-        // if (isset($client1[0])){
-        //     echo 'client not exist';
-        //     exit();
-        // }
-        // if (isset($driver[0])){
-        //     echo 'driver not exist';
-        //     exit();
-        // }
-        // if (isset($kid[0])){
-        //     echo 'kid not exist';
-        //     exit();
-        // }
-
-
         $check_entry_id = DriClient::select('api_token')->where('id',$request->client_profile_id)->get();
         $token_of_insert_id = $check_entry_id[0]['api_token'];
         $current_token = $request->api_token;
@@ -302,7 +282,6 @@ class MainController extends Controller{
         
        
         $check_entry_id = DriClient::select('api_token')->where('id',$request->driclient_id)->get();
-        // dd($check_entry_id);
             $token_of_insert_id = $check_entry_id[0]['api_token'];
             $current_token = $request->api_token;
             $token_of_insert_id = (count($check_entry_id)>0) ? $check_entry_id[0]['api_token'] : null ;
@@ -312,12 +291,27 @@ class MainController extends Controller{
                 return responseJson(0,'غير مصرح بك  ');
 
             }      
-           $statues = DriveProfile::select('statue')->where('id',$request->driver_profile_id)->get();
+           $statues = DriveProfile::select('statue')->where('driclient_id',$request->driclient_id)->get();
                 return responsejson(1,' تم العرض بنجاح  ' ,$statues );
              
 
     }
 
+    public function count_payments(Request $request){
+        $check_entry_id = DriClient::select('api_token')->where('id',$request->driclient_id)->get();
+        $token_of_insert_id = $check_entry_id[0]['api_token'];
+        $current_token = $request->api_token;
+        $token_of_insert_id = (count($check_entry_id)>0) ? $check_entry_id[0]['api_token'] : null ;
+        $tokens = [$token_of_insert_id,$request->api_token];
+
+        if ($tokens[0] !== $tokens[1]) {
+            return responseJson(0,'غير مصرح بك  ');
+
+        }      
+       $statues = Subscription::where('driver_profile_id',$request->driver_profile_id)->count();
+            return responsejson(1,' تم العرض بنجاح  ' ,$statues );
+
+    }
 
     
 }

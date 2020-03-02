@@ -9,12 +9,16 @@ class DriClient extends Model
 
     protected $table = 'driclients';
     public $timestamps = true;
-    protected $fillable = array('name', 'nid', 'api_token','phone', 'gender', 'email', 'pin_code_phone', 'pin_code_email', 'statue', 'type');
+    protected $fillable = array('name', 'nid', 'api_token','phone', 'gender', 'email','statue', 'type','city_id');
   //  protected $hidden = array('api_token');
   
     public function drivers()
     {
         return $this->hasMany('App\Models\DriveProfile','driclient_id');
+    }
+    public function cities()
+    {
+        return $this->belongsTo('App\Models\City','city_id');
     }
 
     public function clients()

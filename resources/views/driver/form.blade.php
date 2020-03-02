@@ -1,5 +1,5 @@
 
-@inject('modal','App\Models\Destination')
+@inject('modal','App\Models\City')
 <?php
  $modals= $modal->pluck('name','id')->toArray();
 ?>
@@ -53,9 +53,9 @@
 
 
                                                                 <div class="form-group row">
-                                                                  <label class="col-md-3 label-control" for="dis"> الحى المراد التوصيل الية        </label>
+                                                                  <label class="col-md-3 label-control" for="dis">    العنوان الحالى         </label>
                                                                   <div class="col-md-9">
-                                                                    {!! Form::select('driclient_id',$modals,null,['class'=>'form-control']) !!}
+                                                                    {!! Form::select('city_id',$modals,null,['class'=>'form-control']) !!}
                                           
                                                                                 </div>
                                                                               </div>

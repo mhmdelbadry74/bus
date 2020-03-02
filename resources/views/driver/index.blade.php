@@ -70,7 +70,7 @@
         <td>{{$loop->iteration}} </td>
        
         <td>{{$recorde->name}} </td>
-        @if($recorde->statues == 1)
+        @if($recorde->statue== 'active')
         <td class="text-center">
             مفعل
         </td>
@@ -88,13 +88,14 @@
                 <button type="submit" class="btn btn-danger btn-xs"><i class="fa fa-"></i>غير مفعل </button>
             </a>
         </td>
+        @endif
+
         <td class="text-center">
         
           <a href="{{url(route('driver.show',$recorde->id))}}" class="btn btn-success btn-xs"> <i class="ft-eye font-medium-3 " ></i> </a> 
         </td>
     
 
-        @endif
         @endif
       
         

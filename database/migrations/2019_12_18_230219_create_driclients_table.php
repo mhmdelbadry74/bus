@@ -15,8 +15,7 @@ class CreateDriclientsTable extends Migration {
 			$table->bigInteger('phone')->nullable();
 			$table->enum('gender', array('male','fmale'))->nullable();
 			$table->string('email', 191)->nullable();
-			$table->string('pin_code_phone', 60)->nullable();
-			$table->string('pin_code_email', 60)->nullable();
+			$table->string('city_id', 191)->nullable();
 			$table->enum('statue', array('active','desactive'))->nullable();
 			$table->enum('type', array('client','driver'))->nullable();
 			$table->string('api_token', 60)->nullable();

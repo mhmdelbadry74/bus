@@ -48,7 +48,7 @@ class ClientController extends Controller
             'nid' => 'required',
             'phone' => 'required',
             'email' => 'required',
-            'dis' => 'required',
+            'city_id' => 'required',
             
            
          
@@ -58,7 +58,7 @@ class ClientController extends Controller
             'nid.required' => 'من فضلك ادخل رقم الهوية ',
             'phone.required' => 'من فضلك ادخل رقم الجوال ',
             'email.required' => 'من فضلك ادخل البريد الالكترونى ',
-            'dis.required' => 'من فضلك ادخل الحى المراد التوصيل الية',
+            'city_id.required' => 'من فضلك ادخل الحى المراد التوصيل الية',
             
         ];
         $this->validate($request,$rules,$messages);
@@ -132,18 +132,18 @@ class ClientController extends Controller
         
     }
     public function active($id){
-        $record = DriClient::findOrFail($id);
-        if($record->statue == 1){
-            $record->statue = 0;
-            $record->save();
+        $recordes = DriClient::findOrFail($id);
+        if($recordes->statue == 1){
+            $recordes->statue = 0;
+            $recordes->save();
         }
         return back();
     }
     public function disactive($id){
-        $record = DriClient::findOrFail($id);
-        if($record->statue == 0){
-            $record->statue = 1;
-            $record->save();
+        $recordes = DriClient::findOrFail($id);
+        if($recordes->statue == 0){
+            $recordes->statue = 1;
+            $recordes->save();
         }
         return back();
     }

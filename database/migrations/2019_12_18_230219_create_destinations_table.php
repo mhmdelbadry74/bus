@@ -11,7 +11,7 @@ class CreateDestinationsTable extends Migration {
 			$table->increments('id');
 			$table->timestamps();
 			$table->string('name');
-			$table->integer('car_id');
+			$table->integer('city_id');
 			$table->string('gps');
 		});
 	}

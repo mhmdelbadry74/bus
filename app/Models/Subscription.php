@@ -17,7 +17,10 @@ class Subscription extends Model
        $record->delete();
        
     }
- 
+    
+    // public function count(Request $request){
+    //     $statues = Subscription::select('driver_profile_id')->where('driver_profile_id',$request->driver_profile_id)->get();
+    // }
     
     public function clients()
     {

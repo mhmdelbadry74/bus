@@ -15,6 +15,10 @@ class City extends Model
     {
         return $this->hasMany('App\Models\Kid');
     }
+    public function driclients()
+    {
+        return $this->hasMany('App\Models\DriClient');
+    }
 
     public function drivers()
     {
