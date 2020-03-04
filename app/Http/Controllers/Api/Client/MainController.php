@@ -15,7 +15,7 @@ use App\Models\Kid;
 use App\Models\Car;
 use App\Models\Payment;
 use App\Models\Subscription;
-
+use DB;
 class MainController extends Controller{
 
 
@@ -313,6 +313,68 @@ class MainController extends Controller{
 
     }
 
+    public function search(Request $request){
+
+        $check_entry_id = DriClient::select('api_token')->where('id',$request->driclient_id)->get();
+        $token_of_insert_id = $check_entry_id[0]['api_token'];
+        $current_token = $request->api_token;
+        $token_of_insert_id = (count($check_entry_id)>0) ? $check_entry_id[0]['api_token'] : null ;
+        $tokens = [$token_of_insert_id,$request->api_token];
+
+        if ($tokens[0] !== $tokens[1]) {
+            return responseJson(0,'غير مصرح بك  ');
+
+        }
+
+      /*   $city = DriClient::select('city_id')->where('id',$request->driclient_id)->get()->toArray();
+        $client_profile = ClientProfile::select('id')->where('driclient_id',$request->driclient_id)->get()->toArray();
+        $kid_profile = Kid::where('client_profile_id',$client_profile[0])->get()->toArray();
+        $array = [$city,$client_profile,$kid_profile];
+        return responsejson(1,' تم العرض بنجاح  ' , $array); */
+
+/*        $datasdas =  DB::select('
+        SELECT
+driclients.id,
+client_profiles.id,
+kids.name,
+driclients.city_id,
+destinations.name,
+destinations.city_id
+
+FROM driclients 
+    INNER JOIN client_profiles
+        ON driclients.id = client_profiles.driclient_id 
+    INNER JOIN kids 
+        ON client_profiles.id = kids.client_profile_id 
+    INNER JOIN destinations 
+        ON kids.destination_id = destinations.id
+	WHERE driclients.id = ?
+        ', [$request->driclient_id]);
+
+print_r($datasdas);
+ */
+
+$data= DB::table('driclients')
+->join('client_profiles','driclients.id','=','client_profiles.driclient_id')
+->join('kids','client_profiles.id','=','kids.client_profile_id')
+->join('destinations','kids.destination_id','=','destinations.id')
+->select(
+    'driclients.id As userid',
+'client_profiles.id As ProfileId',
+'kids.name As name',
+'driclients.city_id As kidCity',
+'destinations.name As SchoolName',
+'destinations.city_id As SchoolCity'
+)->get()->toArray();
+
+return responsejson(1,' تم العرض بنجاح  ' , $data); 
+
+
+
+
+
+
+    }
     
 }
 
